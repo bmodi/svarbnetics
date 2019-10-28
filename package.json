@@ -4,7 +4,7 @@
   "description": "Genetics Modeller",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "debug": "node index.js"
   },
   "repository": {
@@ -20,5 +20,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
   }
 }

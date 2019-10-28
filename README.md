@@ -14,3 +14,8 @@ Visit
 
 to view the website.
 
+## Testing
+
+Run mocha tests with
+
+  npm test

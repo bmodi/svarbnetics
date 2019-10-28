@@ -1,0 +1,24 @@
+{
+  "name": "svarbnetics",
+  "version": "0.0.1",
+  "description": "Genetics Modeller",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmodi/svarbnetics.git"
+  },
+  "author": "bmodi",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bmodi/svarbnetics/issues"
+  },
+  "homepage": "https://github.com/bmodi/svarbnetics#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serve-favicon": "^2.5.0"
+  }
+}

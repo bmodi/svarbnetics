@@ -1,6 +1,6 @@
-# JS Games
+# SVARBnetics
 
-A few games for learning Javascript with.
+A JavaScript library for genetic modelling
 
 Install node, run "npm install" to install dependency modules then run:
 

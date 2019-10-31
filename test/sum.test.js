@@ -1,7 +1,6 @@
-/* test/lib.js */
-import {sum} from '../public/scipts/lib.mjs';
+/* test/sum.js */
 
-// var sum = require('../public/scripts/lib.js');
+var sum = require('../src/sum');
 var expect = require('chai').expect;
 
 describe('#sum()', function() {

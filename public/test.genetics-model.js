@@ -1,4 +1,3 @@
-import Chromosome from './chromosome.js';
 import Organism from './organism.js';
 
 let nextRandom=0;

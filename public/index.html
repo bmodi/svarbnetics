@@ -10,16 +10,17 @@
 <body>
     <h1>Welcome to SVARBnetics!</h1>
 
-    <form>
-        Male Parent:<br><br/>
-        <textarea rows = "5" cols = "60" name = "male_organism">
-            Enter male parent chromosomes here
-         </textarea><br>
-        Female Parent:<br><br/>
-        <textarea rows = "5" cols = "60" name = "male_organism">
-            Enter male parent chromosomes here
-         </textarea><br>
-        <input type="submit" value="Reproduce">
-    </form>
+    <div class="form-style-2">
+        <div class="form-style-2-heading">Enter Parent Genes</div>
+        <form action="" method="post">
+            <label for="field1"><span>Parent A Set 1<span class="required">*</span></span><input type="text" class="input-field" name="field1" value="" /></label>
+            <label for="field2"><span>Parent A Set 2<span class="required">*</span></span><input type="text" class="input-field" name="field2" value="" /></label>
+            <label for="field3"><span>Parent B Set 1<span class="required">*</span></span><input type="text" class="input-field" name="field3" value="" /></label>
+            <label for="field4"><span>Parent B Set 2<span class="required">*</span></span><input type="text" class="input-field" name="field4" value="" /></label>
+            
+            <label><span> </span><input type="submit" value="Reproduce" /></label>
+        </form>
+    </div>
+
 </body>
 </html>

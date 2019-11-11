@@ -1,5 +1,3 @@
-import Chromosome from './chromosome.js';
-
 let nextId=1000;
 
 export default class Organism {

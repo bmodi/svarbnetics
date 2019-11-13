@@ -1,4 +1,4 @@
-import Organism from './organism.js';
+import Organism from '../scripts/organism.js';
 
 let nextRandom=0;
 let randomList = [54, 162, 241, 287, 375, 448, 519, 528, 534, 574, 596, 629, 633, 655, 675, 702, 725, 746, 887, 940];

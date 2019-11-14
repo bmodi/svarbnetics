@@ -1,4 +1,4 @@
-import './test.genetics-model.js';
+import './test.organism.js/index.js';
 
 mocha.checkLeaks();
 mocha.run();

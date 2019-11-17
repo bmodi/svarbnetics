@@ -1,4 +1,4 @@
-import './test.organism.js/index.js';
+import './test.organism.js';
 
 mocha.checkLeaks();
 mocha.run();

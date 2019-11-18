@@ -10,14 +10,13 @@
 <body>
     <h1>Welcome to SVARBnetics!</h1>
 
-
     <div class="form-style-2">
         <div class="form-style-2-heading">Enter Parent Genes</div>
         <form action="" onsubmit="createOffspring()">
-            <label for="field1"><span>Parent A Set 1</span><input type="text" class="input-field" name="field1" value="" /></label>
-            <label for="field2"><span>Parent A Set 2</span><input type="text" class="input-field" name="field2" value="" /></label>
-            <label for="field3"><span>Parent B Set 1</span><input type="text" class="input-field" name="field3" value="" /></label>
-            <label for="field4"><span>Parent B Set 2</span><input type="text" class="input-field" name="field4" value="" /></label>
+            <label for="genes_a1"><span>Parent A Set 1</span><input type="text" class="input-field" id="genes_a1" name="genes_a1" value="" /></label>
+            <label for="genes_a2"><span>Parent A Set 2</span><input type="text" class="input-field" id="genes_a2" name="genes_a2" value="" /></label>
+            <label for="genes_b1"><span>Parent B Set 1</span><input type="text" class="input-field" id="genes_b1" name="genes_b1" value="" /></label>
+            <label for="genes_b2"><span>Parent B Set 2</span><input type="text" class="input-field" id="genes_b2" name="genes_b2" value="" /></label>
 
             <label><span> </span><input type="button" value="Reproduce" onclick="createOffspring()"/></label>
         </form>

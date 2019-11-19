@@ -29,4 +29,17 @@ export default class Organism {
 
     return new Organism( offspringChromosomes );
   }
+
+  toString() {
+    let asString=this.id
+    let delimiter=": ";
+    for(let chrIndex=0; chrIndex<this.chromosomes.length; chrIndex++) {
+      asString += delimiter;
+      let maleParentGenes = this.chromosomes[chrIndex].chromosomeFromMaleParent.join();
+      let femaleParentGenes = this.chromosomes[chrIndex].chromosomeFromFemaleParent.join();
+      asString += "[["+maleParentGenes+"], ["+femaleParentGenes+"]]";
+      delimiter=", ";
+    }
+    return asString;
+  }
 }

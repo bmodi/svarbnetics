@@ -37,6 +37,10 @@ describe('Organism', function () {
     let o1 = new Organism(chromosomesPairs1);
     chai.expect(o1).to.have.property('chromosomes');
   }),
+  it('can convert to a string', function () {
+    let o1 = new Organism(chromosomesPairs1);
+    chai.expect(o1.toString()).to.equal('1005: [[gene33,gene2,gene3], [gene1,gene2,gene44]], [[gene11,gene8,gene99,gene45], [gene11,gene82,gene13,gene10]], [[gene20,gene16], [gene20,gene17]]');
+  }),
   it('can reproduce with another organism', function () {
     let offspring = maleOrganism.reproduce(femaleOrganism, randomNumbers);
     let expectedChromosomes = [

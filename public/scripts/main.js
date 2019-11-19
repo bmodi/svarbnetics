@@ -15,5 +15,13 @@ export default function createOffspring() {
     ] );    
 
     let offspring = maleOrganism.reproduce(femaleOrganism);
-    console.log("["+offspring.chromosomes[0].chromosomeFromMaleParent + "], [" + offspring.chromosomes[0].chromosomeFromFemaleParent+"]");
+    let offspringStr="["+offspring.chromosomes[0].chromosomeFromMaleParent + "], [" + offspring.chromosomes[0].chromosomeFromFemaleParent+"]";
+ 
+    var newItem = document.createElement("LI");       // Create a <li> node
+    var textnode = document.createTextNode("["+offspring.chromosomes[0].chromosomeFromMaleParent + "], [" + offspring.chromosomes[0].chromosomeFromFemaleParent+"]");  // Create a text node
+    newItem.appendChild(textnode);                    // Append the text to <li>
+    
+    var list = document.getElementById("population");    // Get the <ul> element to insert a new node
+    list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>
+    
 }

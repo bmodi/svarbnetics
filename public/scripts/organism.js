@@ -37,8 +37,8 @@ export default class Organism {
       asString += delimiter;
       let maleParentGenes = this.chromosomes[chrIndex].chromosomeFromMaleParent.join();
       let femaleParentGenes = this.chromosomes[chrIndex].chromosomeFromFemaleParent.join();
-      asString += "[["+maleParentGenes+"], ["+femaleParentGenes+"]]";
-      delimiter=", ";
+      asString += "["+maleParentGenes+" / "+femaleParentGenes+"]";
+      delimiter=" ";
     }
     return asString;
   }

@@ -16,19 +16,19 @@ export default function createOffspring() {
 
     let offspring = maleOrganism.reproduce(femaleOrganism);
 
-    // Find a <table> element with id="myTable":
+    addOffspringToTable(maleOrganism, femaleOrganism, offspring);
+}
+
+function addOffspringToTable(maleOrganism, femaleOrganism, offspring) {
     var table = document.getElementById("population").getElementsByTagName('tbody')[0];
-
-    // Create an empty <tr> element and add it to the 1st position of the table:
     var row = table.insertRow(0);
-
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-
     // Add some text to the new cells:
     cell1.innerHTML = maleOrganism.toString();
     cell2.innerHTML = femaleOrganism.toString();
     cell3.innerHTML = offspring.toString();
 }
+

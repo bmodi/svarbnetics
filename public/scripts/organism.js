@@ -30,9 +30,9 @@ export default class Organism {
     return new Organism( offspringChromosomes );
   }
 
-  toString() {
-    let asString=this.id
-    let delimiter=": ";
+  getGenes() {
+    let asString="";
+    let delimiter="";
     for(let chrIndex=0; chrIndex<this.chromosomes.length; chrIndex++) {
       asString += delimiter;
       let maleParentGenes = this.chromosomes[chrIndex].chromosomeFromMaleParent.join();
@@ -41,5 +41,9 @@ export default class Organism {
       delimiter=" ";
     }
     return asString;
+  }
+
+  toString() {
+    return this.id+": "+this.getGenes();
   }
 }

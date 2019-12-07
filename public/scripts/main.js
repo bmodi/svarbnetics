@@ -2,6 +2,10 @@ import Organism from '../scripts/organism.js';
 
 import '../modules/chart.js/dist/Chart.bundle.min.js';
 
+let populationGenes = [];
+let populationCount = [];
+let backgroundColours = [];
+
 export function createOffspring() {
     let genes_a1 = document.getElementById("genes_a1").value.split(',');
     let genes_a2 = document.getElementById("genes_a2").value.split(',');
@@ -19,7 +23,7 @@ export function createOffspring() {
     let offspring = maleOrganism.reproduce(femaleOrganism);
 
     addOffspringToTable(maleOrganism, femaleOrganism, offspring);
-    updatePopulationChart();
+    updatePopulationChart(offspring);
 }
 
 function addOffspringToTable(maleOrganism, femaleOrganism, offspring) {
@@ -35,43 +39,55 @@ function addOffspringToTable(maleOrganism, femaleOrganism, offspring) {
     cell3.innerHTML = offspring.toString();
 }
 
-function updatePopulationChart() {
+function updatePopulationChart(offspring) {
+    let genes = offspring.getGenes();
+    let pos = populationGenes.indexOf( genes );
+    if ( pos<0 ) {
+        populationGenes.push(genes);
+        populationCount.push(1);
+        backgroundColours.push( getRandomColorHex() );
+    } else {
+        populationCount[pos]++;
+    }
+
     let ctx = document.getElementById('myChart').getContext('2d');
     let newChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: populationGenes,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                label: '',
+                data: populationCount,
+                backgroundColor: backgroundColours,
                 borderWidth: 1
             }]
         },
         options: {
+            title: {
+                display: true,
+                text: 'Population by Genes'
+            },
+            legend: {
+                display: false
+            },
             scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1
+                }
                 }]
             }
         }
     });
     return newChart;
+}
+
+function getRandomColorHex() {
+    var hex = "0123456789ABCDEF",
+        color = "#";
+    for (var i = 1; i <= 6; i++) {
+      color += hex[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }

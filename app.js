@@ -14,6 +14,8 @@ app.on("error", error => console.log("The server encountered an error!"));
 
 app.use(express.static('public'))
 app.use(favicon(__dirname + '/public/images/favicon-96x96.png'));
+app.use('/modules', express.static(__dirname + '/node_modules/'));
+
 
 http.createServer(app).listen( process.env.PORT, function(){
   console.log("Server started listening on port " + process.env.PORT);

@@ -7,27 +7,31 @@ export default class Organism {
     this.chromosomes=homologousChromosomePairs;
   }
 
-  reproduce(femaleOrganism, randomService = Math.random) {
-    let offspringChromosomes = [];
+  reproduce(femaleOrganism, numberOfOffspring, randomService = Math.random) {
+    let offspring = [];
 
-    for(let chrIndex=0; chrIndex<femaleOrganism.chromosomes.length; chrIndex++) {
-      let offspringChromosomeFromMaleParent = [];
-      let offspringChromosomeFromFemaleParent = [];
-      for(let geneIndex=0; geneIndex<femaleOrganism.chromosomes[chrIndex].chromosomeFromMaleParent.length; geneIndex++) {
-        offspringChromosomeFromMaleParent.push( randomService()<0.5 ?
-          this.chromosomes[chrIndex].chromosomeFromMaleParent[geneIndex] :
-          this.chromosomes[chrIndex].chromosomeFromFemaleParent[geneIndex] );
-        offspringChromosomeFromFemaleParent.push( randomService()<0.5 ?
-          femaleOrganism.chromosomes[chrIndex].chromosomeFromMaleParent[geneIndex] :
-          femaleOrganism.chromosomes[chrIndex].chromosomeFromFemaleParent[geneIndex] );
+    for( var i=0; i<numberOfOffspring; i++) {
+      let offspringChromosomes = [];
+      for(let chrIndex=0; chrIndex<femaleOrganism.chromosomes.length; chrIndex++) {
+        let offspringChromosomeFromMaleParent = [];
+        let offspringChromosomeFromFemaleParent = [];
+        for(let geneIndex=0; geneIndex<femaleOrganism.chromosomes[chrIndex].chromosomeFromMaleParent.length; geneIndex++) {
+          offspringChromosomeFromMaleParent.push( randomService()<0.5 ?
+            this.chromosomes[chrIndex].chromosomeFromMaleParent[geneIndex] :
+            this.chromosomes[chrIndex].chromosomeFromFemaleParent[geneIndex] );
+          offspringChromosomeFromFemaleParent.push( randomService()<0.5 ?
+            femaleOrganism.chromosomes[chrIndex].chromosomeFromMaleParent[geneIndex] :
+            femaleOrganism.chromosomes[chrIndex].chromosomeFromFemaleParent[geneIndex] );
+        }
+        offspringChromosomes.push( {
+          chromosomeFromMaleParent: offspringChromosomeFromMaleParent,
+          chromosomeFromFemaleParent: offspringChromosomeFromFemaleParent,
+        })
       }
-      offspringChromosomes.push( {
-        chromosomeFromMaleParent: offspringChromosomeFromMaleParent,
-        chromosomeFromFemaleParent: offspringChromosomeFromFemaleParent,
-      })
+      offspring.push( new Organism( offspringChromosomes ) );
     }
 
-    return new Organism( offspringChromosomes );
+    return offspring;
   }
 
   getGenes() {

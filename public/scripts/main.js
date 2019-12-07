@@ -11,6 +11,7 @@ export function createOffspring() {
     let genes_a2 = document.getElementById("genes_a2").value.split(',');
     let genes_b1 = document.getElementById("genes_b1").value.split(',');
     let genes_b2 = document.getElementById("genes_b2").value.split(',');
+    let number_of_offspring = document.getElementById("number_of_offspring").value;
 
     let maleOrganism = new Organism( [
         {chromosomeFromMaleParent: genes_a1, chromosomeFromFemaleParent: genes_a2}
@@ -20,7 +21,7 @@ export function createOffspring() {
         {chromosomeFromMaleParent: genes_b1, chromosomeFromFemaleParent: genes_b2}
     ] );    
 
-    let offspring = maleOrganism.reproduce(femaleOrganism);
+    let offspring = maleOrganism.reproduce(femaleOrganism, number_of_offspring);
 
     addOffspringToTable(maleOrganism, femaleOrganism, offspring);
     updatePopulationChart(offspring);
@@ -36,18 +37,20 @@ function addOffspringToTable(maleOrganism, femaleOrganism, offspring) {
     // Add some text to the new cells:
     cell1.innerHTML = maleOrganism.toString();
     cell2.innerHTML = femaleOrganism.toString();
-    cell3.innerHTML = offspring.toString();
+    cell3.innerHTML = offspring.join();
 }
 
 function updatePopulationChart(offspring) {
-    let genes = offspring.getGenes();
-    let pos = populationGenes.indexOf( genes );
-    if ( pos<0 ) {
-        populationGenes.push(genes);
-        populationCount.push(1);
-        backgroundColours.push( getRandomColorHex() );
-    } else {
-        populationCount[pos]++;
+    for( let i=0; i<offspring.length; i++) {
+        let genes = offspring[i].getGenes();
+        let pos = populationGenes.indexOf( genes );
+        if ( pos<0 ) {
+            populationGenes.push(genes);
+            populationCount.push(1);
+            backgroundColours.push( getRandomColorHex() );
+        } else {
+            populationCount[pos]++;
+        }
     }
 
     let ctx = document.getElementById('myChart').getContext('2d');

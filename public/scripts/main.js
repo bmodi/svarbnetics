@@ -70,6 +70,7 @@ function updatePopulationChart(offspring) {
             legend: {
                 display: false
             },
+            events: [],
             scales: {
             yAxes: [{
                 ticks: {

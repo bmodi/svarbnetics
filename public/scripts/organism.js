@@ -2,9 +2,11 @@ let nextId=1000;
 
 export default class Organism {
 
-  constructor(homologousChromosomePairs) {
+  constructor(homologousChromosomePairs, maleParent=undefined, femaleParent=undefined) {
     this.id=nextId++;
     this.chromosomes=homologousChromosomePairs;
+    this.maleParent=maleParent;
+    this.femaleParent=femaleParent;
   }
 
   reproduce(femaleOrganism, numberOfOffspring, randomService = Math.random) {
@@ -28,7 +30,7 @@ export default class Organism {
           chromosomeFromFemaleParent: offspringChromosomeFromFemaleParent,
         })
       }
-      offspring.push( new Organism( offspringChromosomes ) );
+      offspring.push( new Organism( offspringChromosomes, this, femaleOrganism ) );
     }
 
     return offspring;

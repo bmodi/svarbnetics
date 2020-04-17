@@ -1,5 +1,7 @@
 import Organism from '../scripts/organism.js';
 
+var should = chai.should();
+
 let nextRandom=0;
 let randomList = [54, 162, 241, 287, 375, 448, 519, 528, 534, 574, 596, 629, 633, 655, 675, 702, 725, 746, 887, 940,
                   514, 62, 21, 387, 385, 48, 599, 328, 1, 56, 338, 987, 679, 523, 693, 318, 260, 369, 233, 22, 540,
@@ -43,9 +45,16 @@ describe('Organism', function () {
     let o1 = new Organism(chromosomesPairs1);
     chai.expect(o1).to.have.property('chromosomes');
   }),
+  it('may have an unknown set of parents', function () {
+    let o1 = new Organism(chromosomesPairs1);
+    chai.expect(o1).to.have.property('maleParent');
+    chai.expect(o1).to.have.property('femaleParent');
+    should.not.exist(o1.maleParent);
+    should.not.exist(o1.femaleParent);
+  }),
   it('can convert to a string', function () {
     let o1 = new Organism(chromosomesPairs1);
-    chai.expect(o1.toString()).to.equal('1005: [gene33,gene2,gene3 / gene1,gene2,gene44] [gene11,gene8,gene99,gene45 / gene11,gene82,gene13,gene10] [gene20,gene16 / gene20,gene17]');
+    chai.expect(o1.toString()).to.match(/\d\d\d\d\: \[gene33,gene2,gene3 \/ gene1,gene2,gene44]\ \[gene11,gene8,gene99,gene45 \/ gene11,gene82,gene13,gene10\] \[gene20,gene16 \/ gene20,gene17\]/);
   }),
   it('can return genes', function () {
     let o1 = new Organism(chromosomesPairs1);
@@ -71,5 +80,10 @@ describe('Organism', function () {
     chai.expect(offspring[0].chromosomes).to.deep.equal(expectedChromosomes1);
     chai.expect(offspring[1].chromosomes).to.deep.equal(expectedChromosomes2);
     chai.expect(offspring[2].chromosomes).to.deep.equal(expectedChromosomes3);
+  }),
+  it('has known parents when returned from reproduce function', function () {
+    let offspring = maleOrganism.reproduce(femaleOrganism, 3, randomNumbers);
+    chai.expect(offspring[0].maleParent).to.equal(maleOrganism);
+    chai.expect(offspring[0].femaleParent).to.equal(femaleOrganism);
   });
 });

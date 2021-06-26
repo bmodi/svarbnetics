@@ -68,7 +68,7 @@ function updatePopulationChart(offspring) {
         options: {
             title: {
                 display: true,
-                text: 'Population by Genes'
+                text: 'Offsprings by Genes'
             },
             legend: {
                 display: false

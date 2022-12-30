@@ -20,7 +20,7 @@
   "dependencies": {
     "chart.js": "^2.9.4",
     "express": "^4.17.1",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "serve-favicon": "^2.5.0",
     "sinon": "^7.5.0"
   },
